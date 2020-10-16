@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <script>
+        /**
+         * Función que se encarga de realizar un petición AJAX para autenticar usuario y obtener un JWT
+         */
+        function autenticaUsuario() {
+            // Voy a enviar un JSON al seridor, contendrá los valores escritos por el usuario del formulario.
+            // Estos valores se encapsulan en un objeto JavaScript. Más adelante ese objeto se convertirá en 
+            // una cadena de caracteres (serialización) y se enviará junto con la petición web.
+            var jsonObject = {
+                usuario: document.getElementById("usuario").value,  // Utilizo el id de los campos del formulario
+                password: document.getElementById("password").value
+            };
+
+            // Sólo a efectos de depuración muestro el objeto que voy a enviar al servidor
+            console.log("u: " + jsonObject.usuario + " - p: " + jsonObject.password);
+
+            // Una petición XMLHttpRequest es parecido a un request, pero mucho más rico. Por ejemplo, permite usar
+            // formato JSON para encapsular la información que viaja entre cliente y servidor.
+            var xhttp = new XMLHttpRequest();
+
+            // Los objetos XMLHttpRequest permiten establecer una función de CallBack, esto es una función
+            // asíncrona que se ejecutará en diferentes momentos, en los que el estado de la respuesta esperada
+            // cambie. La respuesta puede pasar por varios "readyState":
+            //  - 1 - OPENED - La petición web se acaba de enviar.
+            //  - 2 - HEADERS_RECEIVED - Disponemos de las cabeceras y el estado de la respuesta del servidor
+            //  - 3 - LOADING - La respuesta completa del servidor se está descargando.
+            //  - 4 - DONE - La respuesta del servidor está completamente disponible.
+            // Además, una respuesta también tiene varios "status". Se puede consultar lista completa en https://www.restapitutorial.com/httpstatuscodes.html
+            // Baste decir que el éxito de la respuesta es el código 200.
+            xhttp.onreadystatechange = function () {
+                // Aunque dispongamos del estado de una respuesta, necesitamos esperar hasta que la carga
+                // de la misma ha terminado.
+                if (this.readyState == 4 && this.status == 200) {
+                    // Una vez tengo la respuesta, la expondré en el interior de un div específicamente creado a este efecto
+                    document.getElementById("respuestaDelServidor").innerHTML = this.response;
+                }
+            };
+            // Voy a configurar una petición a enviar al servidor. Se trata de autenticar al usuario
+            xhttp.open("POST", "http://localhost:8080/usuario/autentica", true);
+            // Especifico una cabecera en la petición (request) para indicar que la comunicación es JSON y UTF-8
+            xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            // Con JSON.stringify serializo el objeto y lo convierto en formato JSON.
+            // Con la función "send(...)" anexo el texto JSON a la petición y la envío. Ahora toca esperar
+            // a que se ejecute la función de callback y los valores de readyState y status de la respuesta sean correctos
+            xhttp.send(JSON.stringify(jsonObject));
+        }
+    </script>
+</head>
+
+<body>
+    <form> <!-- Formulario con el mínimo necesario para enviar un usuario y pasword al servidor -->
+        <input type="text" id="usuario" value="rafa"/> <!-- Establezco valores válidos en usuario y pasword, para ahorrar tiempo -->
+        <input type="password" id="password" value="81dc9bdb52d04dc20036dbd8313ed055"/>
+        <button type="button" onclick="autenticaUsuario()">Autenticar</button>  <!-- El botón llama a la función autenticaUsuario. Mucho cuidado de utilizar <button> y no un <input type="submit"> -->
+    </form>
+    <div id="respuestaDelServidor"></div>
+</body>
+
+</html>
