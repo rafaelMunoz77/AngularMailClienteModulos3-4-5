@@ -1,16 +1,69 @@
 <html>
 
 <head>
-    <script src="index.js"></script>
+    <!-- Inclusión de librerías necesarias para ejecutar Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <!-- JQuery -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+    <!-- Parte JS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+        integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!-- Parte Css de Bootstrap -->
+
+    <!-- Estilos CSS de nuestra pequeña aplicación -->
+    <link href="css/index.css" rel="stylesheet">
+    <!-- Código JS de nuestra aplicación -->
+    <script src="js/index.js"></script>
 </head>
 
 <body>
-    <form> <!-- Formulario con el mínimo necesario para enviar un usuario y pasword al servidor -->
-        <input type="text" id="usuario" value="rafa"/> <!-- Establezco valores válidos en usuario y pasword, para ahorrar tiempo -->
-        <input type="password" id="password" value="81dc9bdb52d04dc20036dbd8313ed055"/>
-        <button type="button" onclick="autenticaUsuario()">Autenticar</button>  <!-- El botón llama a la función autenticaUsuario. Mucho cuidado de utilizar <button> y no un <input type="submit"> -->
-    </form>
-    <div id="respuestaDelServidor"></div>
+    <!-- Un div "container" se va a adaptar al tamaño de cada pantalla: sm, md, lg y xl. "py-3" da un padding top y bottom de 3 -->
+    <div class="container py-3">
+        <div class="card my-5">
+            <!-- card se utiliza para crear tarjetas Bootstrap (un elemento muy atractivo). "my-5" es margin top y bottom de 5 .
+            La clase "card" admite en su interior varias clases: como "card-body". -->
+            <div class="card-body">
+                <!-- Cuando hagamos un layout utilizaremos una clase "row", dentro de esta se reparten 12 columnas -->
+                <div class="row m-3">
+                    <!-- Ahora vienen dos div con las siguientes características:
+                            - "col-md-6" hace que cada div ocupe la mitad de la fila (porque una fila entera son 12 columnas)
+                              en dispositivos de un tamaño mínimo de "md". Por tanto, cada div con "col-md-6" ocupa 6 de las 12
+                              columnas disponibles en tamaños md, lg y xl. Cuando el tamaño del dispositivo sea de tipo pequeño (sm)
+                              los divs con clase "col-md-6" se apilarán.
+                            - "d-none" indica que el div no debe mostrarse, sin embargo esa clase se ve anulada por d-md-block para
+                              los dispositivos cuyo tamaño mínimo esté en "md", eso engloba los tamaños md, lg y xl.
+                            - "bg-login-image" es una clase creada por mí, no de bootstrap, y su descripción se puede encontrar-->
+                    <div class="col-md-6 d-none d-md-block bg-login-image"></div>
+                    <div class="col-md-6"> <!-- Div con el formulario de autenticación -->
+                        <div class="text-center"> <!-- Bootstrap incorpora clases para formateo, como el centrado-->
+                            <h1 class="h4 text-gray-900 my-3">Mira tus mensajes!</h1>
+                        </div>
+                        <form>
+                            <div class="form-group"> <!-- Con form-group bootstrap prepara espacio para etiqueta y campo de formulario. En este ejemplo no uso la etiqueta -->
+                                <input type="text" class="form-control" id="usuario" aria-describedby="usuario"
+                                    placeholder="Usuario" value="rafa">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password"
+                                    placeholder="Contrase&ntilde;a" aria-describedby="contrase&ntilde;a"
+                                    value="81dc9bdb52d04dc20036dbd8313ed055">
+                            </div>
+                            <!-- Bootstrap dispone de clases para presentar botones y colores predeterminados. El "primary" es un azul -->
+                            <button type="button" class="btn btn-primary btn-block" id="btnEntrar"
+                                onclick="autenticaUsuario()">Entrar</button>
+                            <hr>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- En el div siguiente se cargará una tabla formada con los mensajes devueltos por el servidor -->
+        <div id="respuestaDelServidor"></div>
+
+    </div>
 </body>
+
+</html>
 
 </html>
