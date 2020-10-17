@@ -1,0 +1,71 @@
+// Variables
+
+// Restate Bootstrap Variables
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #BD5D38 !default;
+$yellow:  #ffc107 !default;
+$green:   #68a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$primary:       $purple !default;  
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$font1: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+$font2: 'Courier New', Courier, monospace;
+$font3: Arial, Helvetica, sans-serif;
+$font4: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+/*
+@mixin fondo-con-imagen-centrada {
+    background-position: center;
+    background-size: cover;
+    border: 0px;
+}
+
+body {
+    font-family: $font4;
+}
+
+.btn-primary {
+    background-color: $primary !important;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+    background-color: $yellow;
+ }
+
+.table-striped > tbody > tr:nth-child(even) > td {
+    background-color: $green;
+} 
+*/
+.bg-login-image {
+    background: url("../img/bg-login.jpg"); 
+    background-position: center;
+    background-size: cover;
+    border: 0px;
+}
+  

@@ -1,6 +1,31 @@
-.bg-login-image {
-    background: url("../img/bg-login.jpg"); 
+/*
+@mixin fondo-con-imagen-centrada {
     background-position: center;
     background-size: cover;
     border: 0px;
-  }
+}
+
+body {
+    font-family: $font4;
+}
+
+.btn-primary {
+    background-color: $primary !important;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+    background-color: $yellow;
+ }
+
+.table-striped > tbody > tr:nth-child(even) > td {
+    background-color: $green;
+} 
+*/
+.bg-login-image {
+  background: url("../img/bg-login.jpg");
+  background-position: center;
+  background-size: cover;
+  border: 0px;
+}
+
+/*# sourceMappingURL=index.css.map */
