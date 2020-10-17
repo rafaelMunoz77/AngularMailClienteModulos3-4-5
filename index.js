@@ -61,8 +61,10 @@ function pedirListadoMensajesMedianteJWT (jwt) {
     // Función de callback. Se ejecutará cada vez que la respuesta a la petición XHR cambie de estado
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) { // readyState 4 = "resp. recibida" y status = 200 "Todo Ok"
-            // Escribo la respuesta dentro de un div que tiene el html
-            document.getElementById("respuestaDelServidor").innerHTML = this.response; 
+            // Tomo la cadena de texto con los mensajes obtenidos, en formato JSON, y lo convierto en un array JavaScript 
+            var arrayMensajes = JSON.parse(this.response);
+            // Inserto en el div correspondiente una tabla HTML obtenida co el array de mensajes
+            document.getElementById("respuestaDelServidor").innerHTML = getTablaFromArrayMensajes(arrayMensajes); 
         }
     };
     // Abro la petición XHR
@@ -71,4 +73,22 @@ function pedirListadoMensajesMedianteJWT (jwt) {
     xhttp.setRequestHeader("Authorization", "Bearer " + jwt); // Incluyo el jwt de autenticación
     xhttp.send(); // Envío la petición XHR
 }
+
+
+
+/*
+* Función que toma un array de elementos de tipo "mensaje" y construye una tabla HTML con ellos
+*/
+function getTablaFromArrayMensajes (arrayMensajes) {
+    var htmlADevolver = "<table border='1' width='100%'>"; // Comienzo a construir la tabla
+    arrayMensajes.forEach(mensaje => {   // Para cada elemento del array de mensajes utilizo una función arrow
+        var fechaDeMensaje = new Date(mensaje.fecha);  // La fecha llega en milisegundos, la convierto en un objeto Date
+        var strFechaHora = fechaDeMensaje.toLocaleDateString() + " " + fechaDeMensaje.toLocaleTimeString(); // Construyo una cadena de texto con fecha y hora
+        // Con las variables anteriores construyo un elemento <tr> con cada mensaje, dentro hay tres columnas
+        htmlADevolver += "<tr><td>" + mensaje.id + "</td><td>" + mensaje.asunto + "</td><td>" + strFechaHora + "</td></tr>"
+    });
+    htmlADevolver += "</table>" // Cierro la tabla y devuelvo
+    return htmlADevolver;
+}
+
 
