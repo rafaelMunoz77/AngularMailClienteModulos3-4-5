@@ -39,7 +39,6 @@ $font2: 'Courier New', Courier, monospace;
 $font3: Arial, Helvetica, sans-serif;
 $font4: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
-/*
 @mixin fondo-con-imagen-centrada {
     background-position: center;
     background-size: cover;
@@ -61,11 +60,9 @@ body {
 .table-striped > tbody > tr:nth-child(even) > td {
     background-color: $green;
 } 
-*/
+
 .bg-login-image {
     background: url("../img/bg-login.jpg"); 
-    background-position: center;
-    background-size: cover;
-    border: 0px;
+    @include fondo-con-imagen-centrada();
 }
   

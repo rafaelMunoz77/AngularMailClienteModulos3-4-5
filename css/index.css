@@ -1,26 +1,19 @@
-/*
-@mixin fondo-con-imagen-centrada {
-    background-position: center;
-    background-size: cover;
-    border: 0px;
-}
-
 body {
-    font-family: $font4;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .btn-primary {
-    background-color: $primary !important;
+  background-color: #6f42c1 !important;
 }
 
 .table-striped > tbody > tr:nth-child(odd) > td {
-    background-color: $yellow;
- }
+  background-color: #ffc107;
+}
 
 .table-striped > tbody > tr:nth-child(even) > td {
-    background-color: $green;
-} 
-*/
+  background-color: #68a745;
+}
+
 .bg-login-image {
   background: url("../img/bg-login.jpg");
   background-position: center;
