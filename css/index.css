@@ -1,6 +1,24 @@
+body {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.btn-primary {
+  background-color: #6f42c1 !important;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #ffc107;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #68a745;
+}
+
 .bg-login-image {
-    background: url("../img/bg-login.jpg"); 
-    background-position: center;
-    background-size: cover;
-    border: 0px;
-  }
+  background: url("../img/bg-login.jpg");
+  background-position: center;
+  background-size: cover;
+  border: 0px;
+}
+
+/*# sourceMappingURL=index.css.map */
