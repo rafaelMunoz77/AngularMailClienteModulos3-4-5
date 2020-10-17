@@ -80,14 +80,15 @@ function pedirListadoMensajesMedianteJWT (jwt) {
 * Función que toma un array de elementos de tipo "mensaje" y construye una tabla HTML con ellos
 */
 function getTablaFromArrayMensajes (arrayMensajes) {
-    var htmlADevolver = "<table border='1' width='100%'>"; // Comienzo a construir la tabla
+    var htmlADevolver = "<table  class='table table-bordered table-striped'>" +
+    "<thead><th>Id</th><th>Asunto</th><th>Fecha</th><tbody>"; // Comienzo a construir la tabla
     arrayMensajes.forEach(mensaje => {   // Para cada elemento del array de mensajes utilizo una función arrow
         var fechaDeMensaje = new Date(mensaje.fecha);  // La fecha llega en milisegundos, la convierto en un objeto Date
         var strFechaHora = fechaDeMensaje.toLocaleDateString() + " " + fechaDeMensaje.toLocaleTimeString(); // Construyo una cadena de texto con fecha y hora
         // Con las variables anteriores construyo un elemento <tr> con cada mensaje, dentro hay tres columnas
         htmlADevolver += "<tr><td>" + mensaje.id + "</td><td>" + mensaje.asunto + "</td><td>" + strFechaHora + "</td></tr>"
     });
-    htmlADevolver += "</table>" // Cierro la tabla y devuelvo
+    htmlADevolver += "</tbody></table>" // Cierro la tabla y devuelvo
     return htmlADevolver;
 }
 
